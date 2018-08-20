@@ -1,8 +1,9 @@
 const {DIR, ENV} = require('./settings');
-const merge = require('webpack-merge');
-const common = require('./webpack.common');
 
-module.exports = merge(common, {
+const merge = require('webpack-merge');
+const commonConfig = require('./webpack.common');
+
+module.exports = merge(commonConfig, {
   mode: 'development',
 
   devServer: {
@@ -13,7 +14,7 @@ module.exports = merge(common, {
     historyApiFallback: true,
     open: true,
     compress: true,
-    stats: common.stats,
+    stats: commonConfig.stats,
     overlay: {
       warnings: false,
       errors: true

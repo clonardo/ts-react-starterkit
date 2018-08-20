@@ -1,16 +1,15 @@
 const {DIR} = require('./settings');
-
 const babelConfig = require('./babel.config');
 
+const chalk = require('chalk');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const PROCESS_MODE = process.env.TARGET_ENV || 'development';
-console.log(`>> Build for ${PROCESS_MODE} <<\n`);
-
-console.log(babelConfig.presets);
+console.log(
+  chalk.cyan('\n' + `>> Build for ${chalk.bold(PROCESS_MODE)} <<` + '\n')
+);
 
 module.exports = {
   entry: {
@@ -35,11 +34,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '.ts', '.tsx', '.js', '.jsx', '.pcss', '.css' ],
-    plugins: [ new TsconfigPathsPlugin() ],
-    alias: {
-      Components: DIR.components
-    }
+    extensions: [ '.ts', '.tsx', '.js', '.jsx', '.pcss', '.css' ]
   },
 
   externals: {

@@ -1,11 +1,11 @@
 const {DIR} = require('./settings');
-const merge = require('webpack-merge');
-const common = require('./webpack.common');
+const commonConfig = require('./webpack.common');
 
+const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = merge(common, {
+module.exports = merge(commonConfig, {
   mode: 'production',
 
   plugins: [

@@ -1,3 +1,5 @@
+import './styles/common.pcss';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
