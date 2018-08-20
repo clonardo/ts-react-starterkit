@@ -1,5 +1,7 @@
 const {DIR} = require('./settings');
 
+const babelConfig = require('./babel.config');
+
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -8,14 +10,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PROCESS_MODE = process.env.TARGET_ENV || 'development';
 console.log(`>> Build for ${PROCESS_MODE} <<\n`);
 
+console.log(babelConfig.presets);
+
 module.exports = {
   entry: {
-    'collection/dist/elements': DIR.collection + 'src/index.ts',
-    'demo/build/demo': DIR.demo + 'src/scripts/app.ts'
+    'app': DIR.source + 'app.tsx',
   },
+
   output: {
     filename: '[name].bundle.js',
-    path: DIR.root,
+    path: DIR.client,
     pathinfo: true,
     publicPath: '/'
   },
@@ -25,17 +29,22 @@ module.exports = {
   stats: {
     children: false,
     chunks: false,
+    exclude: [ 'node_modules' ],
     modules: false,
-    exclude: [ 'node_modules' ]
+    timings: false
   },
 
   resolve: {
     extensions: [ '.ts', '.tsx', '.js', '.jsx', '.pcss', '.css' ],
     plugins: [ new TsconfigPathsPlugin() ],
     alias: {
-      Elements: DIR.elements,
-      Helpers: DIR.helpers
+      Components: DIR.components
     }
+  },
+
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM'
   },
 
   module: {
@@ -59,7 +68,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: DIR.config + 'postcss.config.js',
+                path: DIR.config + 'postcss.config.js'
               }
             }
           }
@@ -67,20 +76,24 @@ module.exports = {
       },
 
       {
+        loader: "source-map-loader",
+        enforce: "pre",
+        test: /\.js$/
+      },
+
+      {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'awesome-typescript-loader',
             options: {
-              babelrc: DIR.config + 'babel.config.js',
-            }
-          },
-          {
-            loader: "ts-loader",
-            options: {
-              transpileOnly: true,
-              experimentalWatchApi: true
+              useCache: true,
+              useBabel: true,
+              babelOptions: {
+                babelrc: false,
+                presets: babelConfig.presets
+              }
             }
           },
           {
@@ -113,8 +126,8 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: DIR.demo + 'src/index.ejs',
-      filename: 'demo/build/index.html',
+      template: DIR.source + 'index.ejs',
+      filename: 'index.html',
       minify: {
         html5: true,
         removeComments: true,

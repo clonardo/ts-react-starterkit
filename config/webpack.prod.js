@@ -10,13 +10,9 @@ module.exports = merge(common, {
 
   plugins: [
     new CleanWebpackPlugin(
-      [
-        'collection/dist',
-        'demo/build',
-        'elements/**/dist'
-      ], {
+      ['client'], {
         root: DIR.root,
-        verbose: true,
+        verbose: false,
         dry: false,
         watch: true,
         allowExternal: false,

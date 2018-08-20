@@ -5,14 +5,14 @@ const root = path.resolve(__dirname, '../');
 
 const DIR = {
   root,
-  elements        : path.join(root, 'elements/'),
-  collection      : path.join(root, 'collection/'),
+  client          : path.join(root, 'client/'),
+  source          : path.join(root, 'source/'),
+  components      : path.join(root, 'source/components/'),
   config          : path.join(root, 'config/'),
-  demo            : path.join(root, 'demo/'),
-  helpers         : path.join(root, 'abstract/helpers/')
 };
 
 const ENV = {
+  devPort         : 8081,
   browserlist     : pkg.browserslist
 }
 

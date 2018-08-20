@@ -4,6 +4,7 @@
 dist
 build
 .stylelint-cache
+.awcache
 
 ###############
 #-- Dropbox --#
