@@ -1,0 +1,130 @@
+body {
+  display: block;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Helvetica,
+    Arial,
+    Ubuntu,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  color: #001420;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+section:not(:first-child) .ElementName {
+  margin-top: 4rem;
+}
+
+.ElementName {
+  font-size: 1.5rem;
+}
+
+.ElementName a {
+  text-decoration: none;
+  position: relative;
+
+  &:link,
+  &:visited {
+    color: #001420;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #36546D;
+  }
+
+  &::before {
+    content: '↗';
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.15s linear;
+    visibility: hidden;
+  }
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: 0.25s linear;
+    transform-origin: 0% 0%;
+    background-color: #36546D;
+  }
+
+  &:hover::before,
+  &:focus::before,
+  &:active::before {
+    visibility: visible;
+  }
+
+  &:hover::after,
+  &:focus::after,
+  &:active::after {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+}
+
+.OctoCat {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 0;
+  fill: #001420;
+  color: #FFF;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+
+  &:hover .OctoArm {
+    animation: octo-arm-wave 560ms ease-in-out;
+
+    @media (max-width: 500px) {
+      animation: none;
+    }
+  }
+}
+
+.OctoBody {
+  fill: currentColor;
+}
+
+.OctoArm {
+  fill: currentColor;
+  transform-origin: 130px 106px;
+}
+
+@keyframes octo-arm-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
