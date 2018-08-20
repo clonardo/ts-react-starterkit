@@ -1,8 +1,7 @@
 ###############
 #-- Project --#
 ###############
-dist
-build
+client
 .stylelint-cache
 .awcache
 
