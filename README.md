@@ -1,0 +1,1 @@
+[![dependencies Status](https://david-dm.org/giotramu/ts-react-scaffold/status.svg?style=flat-square)](https://david-dm.org/giotramu/ts-react-scaffold)
