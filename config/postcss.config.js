@@ -4,7 +4,6 @@ module.exports = ctx => ({
   sourceMap: ctx.env === 'development',
   plugins: {
     'postcss-import': {},
-    'stylelint': {},
     'postcss-preset-env': {
       browsers: ENV.browserlist,
       stage: 0,

@@ -17,11 +17,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --config=config/webpack.dev",
+    "start": "TARGET_ENV=development webpack-dev-server --hot --config=config/webpack.dev",
     "build": "TARGET_ENV=production webpack --config=config/webpack.prod",
-    "lint:css": "stylelint **/*.pcss",
-    "lint:ts": "tslint -p .",
-    "lint": "yarn lint:css && yarn lint:ts"
+    "lint:css": "stylelint **/*.pcss --config=config/stylelint.json --custom-formatter=node_modules/stylelint-formatter-pretty || true",
+    "lint:ts": "tslint --project . --config config/tslint.json --format codeFrame || true",
+    "lint": "npm run lint:css && npm run lint:ts"
   },
   "dependencies": {
     "react": "16.4.2",
@@ -52,6 +52,9 @@
     "postcss-preset-env": "5.3.0",
     "postcss-reporter": "6.0.0",
     "source-map-loader": "0.2.4",
+    "stylelint": "9.5.0",
+    "stylelint-formatter-pretty": "1.0.3",
+    "stylelint-webpack-plugin": "0.10.5",
     "svg-react-loader": "0.4.5",
     "tslint": "5.11.0",
     "tslint-loader": "3.6.0",

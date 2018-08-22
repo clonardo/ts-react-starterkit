@@ -5,6 +5,8 @@ const chalk = require('chalk');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const StyleLintFormatter = require('stylelint-formatter-pretty');
 
 const PROCESS_MODE = process.env.TARGET_ENV || 'development';
 console.log(
@@ -44,6 +46,9 @@ module.exports = {
 
   module: {
     rules: [
+      /**
+       * Manage CSS + PCSS files
+       */
       {
         test: /\.(p?)css$/,
         exclude: /node_modules/,
@@ -52,30 +57,34 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              // modules: true,                         /* Uncomment for enabling CSS-Modules */
+              // localIdentName: '[name]-[module]',     /* Uncomment for enabling CSS-Modules */
               import: false,
               importLoaders: 1,
-              localIdentName: '[name]-[module]',
-              modules: true,
               url: false
             }
           },
           {
             loader: 'postcss-loader',
             options: {
-              config: {
-                path: DIR.config + 'postcss.config.js'
-              }
+              config: {path: DIR.config}
             }
           }
         ]
       },
 
+      /**
+       * Regenerate source-map
+       */
       {
         loader: "source-map-loader",
         enforce: "pre",
         test: /\.js$/
       },
 
+      /**
+       * Manage TS and TSX files
+       */
       {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
@@ -94,13 +103,18 @@ module.exports = {
           {
             loader: 'tslint-loader',
             options: {
+              configFile: DIR.config + 'tslint.json',
               emitErrors: true,
-              failOnHint: true
+              failOnHint: true,
+              formatter: 'codeFrame'
             }
           }
         ]
       },
 
+      /**
+       * Manage SVG files
+       */
       {
         test: /\.svg$/,
         loader: 'svg-react-loader',
@@ -111,6 +125,9 @@ module.exports = {
         }
       },
 
+      /**
+       * Manage assets
+       */
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
         loader: 'url-loader',
@@ -120,6 +137,12 @@ module.exports = {
   },
 
   plugins: [
+    new StyleLintPlugin({
+      syntax: 'scss',
+      configFile: DIR.config + 'stylelint.json',
+      formatter: StyleLintFormatter
+    }),
+
     new HtmlWebpackPlugin({
       template: DIR.source + 'index.ejs',
       filename: 'index.html',
