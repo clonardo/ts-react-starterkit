@@ -47,6 +47,15 @@ module.exports = {
   module: {
     rules: [
       /**
+       * Manage HTML files
+       */
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+        options: {minimize: true}
+      },
+
+      /**
        * Manage CSS + PCSS files
        */
       {
@@ -77,9 +86,9 @@ module.exports = {
        * Regenerate source-map
        */
       {
-        loader: "source-map-loader",
+        test: /\.js$/,
         enforce: "pre",
-        test: /\.js$/
+        loader: "source-map-loader"
       },
 
       /**
@@ -129,7 +138,7 @@ module.exports = {
        * Manage assets
        */
       {
-        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff(2)?)$/,
         loader: 'url-loader',
         options: {limit: 10000}
       }
