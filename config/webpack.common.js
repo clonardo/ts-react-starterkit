@@ -87,6 +87,7 @@ module.exports = {
        */
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         enforce: "pre",
         loader: "source-map-loader"
       },
