@@ -15,7 +15,14 @@
     "node": ">= 8.5.x",
     "yarn": ">= 1.5.x"
   },
-  "main": "index.js",
+  "main": "source/app.tsx",
+  "browserslist": [
+    "last 1 versions",
+    "not ie <= 11",
+    "not op_mini all",
+    "not dead",
+    "not < 0.5%"
+  ],
   "scripts": {
     "start": "TARGET_ENV=development webpack-dev-server --hot --config=config/webpack.dev",
     "build": "TARGET_ENV=production webpack --config=config/webpack.prod",
