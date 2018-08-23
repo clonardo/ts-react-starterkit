@@ -1,8 +1,8 @@
-[![dependencies Status](https://david-dm.org/giotramu/ts-react-starterkit/status.svg?style=flat-square)](https://david-dm.org/giotramu/ts-react-starterkit)
-
 # TS React StarterKit
 
 Boilerplate to setup a web project with Webpack 4, React 16, Typescript 3, CSS Modules, Node SASS or PostCSS Plugin ecosystem.
+
+[![dependencies Status](https://david-dm.org/giotramu/ts-react-starterkit/status.svg?style=flat-square)](https://david-dm.org/giotramu/ts-react-starterkit)
 
 
 ## Requirements
@@ -55,7 +55,3 @@ $ yarn lint
   - [babel-preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
   - [babel-preset-react](https://github.com/babel/babel/tree/master/packages/babel-preset-react)
 - [BlueprintJS v3.x](https://github.com/palantir/blueprint)
-
----
-
-<a href="https://ux.contactlab.com/" title="Contactlab's Design System"><img src="https://ux.contactlab.com/assets/images/UXD.svg" width="150px" alt="Clab UXD Team Logo" /></a>
