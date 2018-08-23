@@ -144,6 +144,10 @@ module.exports = {
       formatter   : StyleLintFormatter
     }),
 
+    new MiniCssExtractPlugin({
+      filename: '[name].bundle.css'
+    }),
+
     new HtmlWebpackPlugin({
       template  : DIR.source + 'index.ejs',
       filename  : 'index.html',
@@ -156,9 +160,9 @@ module.exports = {
       }
     }),
 
-    new MiniCssExtractPlugin({
-      filename: '[name].bundle.css'
-    }),
+    new webpack.WatchIgnorePlugin([
+      /.pcss\.d\.ts$/
+    ]),
 
     new webpack.DefinePlugin({
       'process.env': {
