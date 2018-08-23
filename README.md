@@ -1,6 +1,6 @@
 # Typescrit & React StarterKit
 
-Boilerplate to setup a web project with Webpack 4, React 16, Typescript 3, CSS Modules, Node SASS or PostCSS Plugin ecosystem.
+Boilerplate to setup a web project with Webpack 4, React 16, Typescript 3, CSS Modules and PostCSS.
 
 [![dependencies Status](https://david-dm.org/giotramu/ts-react-starterkit/status.svg?style=flat-square)](https://david-dm.org/giotramu/ts-react-starterkit)
 

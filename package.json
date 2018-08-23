@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "ts-react-starterkit",
-  "description": "Boilerplate to setup a web project with Webpack 4, React 16, Typescript 3, CSS Modules, Node SASS or PostCSS Plugin ecosystem.",
+  "description": "Boilerplate to setup a web project with Webpack 4, React 16, Typescript 3, CSS Modules and PostCSS.",
   "version": "0.0.0",
   "license": "UNLICENSED",
   "author": "Giovanni Tramutola <tramutola.giovanni@gmail.com>",
