@@ -11,21 +11,19 @@ module.exports = merge(commonConfig, {
   plugins: [
     new CleanWebpackPlugin(
       ['client'], {
-        root: DIR.root,
-        verbose: false,
-        dry: false,
-        watch: true,
-        allowExternal: false,
-        beforeEmit: true
+        root           : DIR.root,
+        verbose        : false,
+        dry            : false,
+        watch          : true,
+        allowExternal  : false,
+        beforeEmit     : true
       }
     ),
 
     new UglifyJSPlugin({
-      parallel: true,
-      exclude: /node_modules/,
-      uglifyOptions: {
-        compress: {drop_console: true}
-      }
+      parallel       : true,
+      exclude        : /node_modules/,
+      uglifyOptions  : {compress: {drop_console: true}}
     })
   ]
 });

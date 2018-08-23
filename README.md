@@ -1,4 +1,4 @@
-# TS React StarterKit
+# Typescrit & React StarterKit
 
 Boilerplate to setup a web project with Webpack 4, React 16, Typescript 3, CSS Modules, Node SASS or PostCSS Plugin ecosystem.
 
@@ -25,11 +25,6 @@ $ yarn lint
 ```
 
 
-## SCSS Version
-
-[Go to `chore/node-sass` branch ↗](https://github.com/giotramu/ts-react-starterkit/tree/chore/node-sass)
-
-
 ## Built on top
 
 - [Typescript v3.x](https://github.com/Microsoft/TypeScript)
@@ -39,7 +34,6 @@ $ yarn lint
   - [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin)
   - [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
   - [postcss-loader](https://github.com/postcss/postcss-loader)
-  - [sass-loader](https://github.com/postcss/postcss-loader)
   - [source-map-loader](https://github.com/postcss/postcss-loader)
   - [style-loader](https://github.com/webpack-contrib/style-loader)
   - [svg-react-loader](https://github.com/jhamlet/svg-react-loader)

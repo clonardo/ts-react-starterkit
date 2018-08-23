@@ -19,20 +19,20 @@ module.exports = {
   },
 
   output: {
-    filename: '[name].bundle.js',
-    path: DIR.client,
-    pathinfo: true,
-    publicPath: '/'
+    filename    : '[name].bundle.js',
+    path        : DIR.client,
+    pathinfo    : true,
+    publicPath  : '/'
   },
 
   cache: true,
 
   stats: {
-    children: false,
-    chunks: false,
-    exclude: [ 'node_modules' ],
-    modules: false,
-    timings: false
+    children  : false,
+    chunks    : false,
+    exclude   : [ 'node_modules' ],
+    modules   : false,
+    timings   : false
   },
 
   resolve: {
@@ -40,21 +40,12 @@ module.exports = {
   },
 
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM'
+    'react'      : 'React',
+    'react-dom'  : 'ReactDOM'
   },
 
   module: {
     rules: [
-      /**
-       * Manage HTML files
-       */
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
-        options: {minimize: true}
-      },
-
       /**
        * Manage CSS + PCSS files
        */
@@ -62,22 +53,22 @@ module.exports = {
         test: /\.(p?)css$/,
         exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader,
+          PROCESS_MODE === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: 'typings-for-css-modules-loader',
             options: {
-              // modules: true,                         /* Uncomment for enabling CSS-Modules */
-              // localIdentName: '[name]-[module]',     /* Uncomment for enabling CSS-Modules */
-              import: false,
-              importLoaders: 1,
-              url: false
+              sourceMap       : PROCESS_MODE === 'development',
+              importLoaders   : 1,
+              url             : false,
+              modules         : true,
+              localIdentName  : '[name]__[local]--[hash:base64:5]',
+              camelCase       : true,
+              namedExport     : true
             }
           },
           {
-            loader: 'postcss-loader',
-            options: {
-              config: {path: DIR.config}
-            }
+            loader   : 'postcss-loader',
+            options  : {config: {path: DIR.config}}
           }
         ]
       },
@@ -86,37 +77,37 @@ module.exports = {
        * Regenerate source-map
        */
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        enforce: "pre",
-        loader: "source-map-loader"
+        test     : /\.js$/,
+        exclude  : /node_modules/,
+        enforce  : "pre",
+        loader   : "source-map-loader"
       },
 
       /**
        * Manage TS and TSX files
        */
       {
-        test: /\.ts(x?)$/,
-        exclude: /node_modules/,
+        test     : /\.ts(x?)$/,
+        exclude  : /node_modules/,
         use: [
           {
             loader: 'awesome-typescript-loader',
             options: {
-              useCache: true,
-              useBabel: true,
+              useCache  : true,
+              useBabel  : true,
               babelOptions: {
-                babelrc: false,
-                presets: babelConfig.presets
+                babelrc  : false,
+                presets  : babelConfig.presets
               }
             }
           },
           {
             loader: 'tslint-loader',
             options: {
-              configFile: DIR.config + 'tslint.json',
-              emitErrors: true,
-              failOnHint: true,
-              formatter: 'codeFrame'
+              configFile  : DIR.config + 'tslint.json',
+              emitErrors  : true,
+              failOnHint  : true,
+              formatter   : 'codeFrame'
             }
           }
         ]
@@ -126,12 +117,12 @@ module.exports = {
        * Manage SVG files
        */
       {
-        test: /\.svg$/,
-        loader: 'svg-react-loader',
+        test    : /\.svg$/,
+        loader  : 'svg-react-loader',
         options: {
-          classIdPrefix: '[name]-[hash:8]__',
-          propsMap: {fillRule: 'fill-rule', foo: 'bar'},
-          xmlnsTest: /^xmlns.*$/
+          classIdPrefix  : '[name]-[hash:8]__',
+          propsMap       : {fillRule: 'fill-rule'},
+          xmlnsTest      : /^xmlns.*$/
         }
       },
 
@@ -139,29 +130,29 @@ module.exports = {
        * Manage assets
        */
       {
-        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff(2)?)$/,
-        loader: 'url-loader',
-        options: {limit: 10000}
+        test     : /\.(png|jpe?g|gif|svg|eot|ttf|woff(2)?)$/,
+        loader   : 'url-loader',
+        options  : {limit: 10000}
       }
     ]
   },
 
   plugins: [
     new StyleLintPlugin({
-      syntax: 'scss',
-      configFile: DIR.config + 'stylelint.json',
-      formatter: StyleLintFormatter
+      syntax      : 'scss',
+      configFile  : DIR.config + 'stylelint.json',
+      formatter   : StyleLintFormatter
     }),
 
     new HtmlWebpackPlugin({
-      template: DIR.source + 'index.ejs',
-      filename: 'index.html',
+      template  : DIR.source + 'index.ejs',
+      filename  : 'index.html',
       minify: {
-        html5: true,
-        removeComments: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        useShortDoctype: true
+        html5                          : true,
+        removeComments                 : true,
+        removeScriptTypeAttributes     : true,
+        removeStyleLinkTypeAttributes  : true,
+        useShortDoctype                : true
       }
     }),
 
