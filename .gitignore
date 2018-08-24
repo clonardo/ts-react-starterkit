@@ -4,6 +4,7 @@
 client
 .stylelint-cache
 .awcache
+*.pcss.d.ts
 
 ###############
 #-- Dropbox --#
