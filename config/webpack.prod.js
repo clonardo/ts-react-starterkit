@@ -1,6 +1,5 @@
 const {DIR} = require('./settings');
 const commonConfig = require('./webpack.common');
-
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -8,22 +7,27 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = merge(commonConfig, {
   mode: 'production',
 
+  performance: {
+    maxAssetSize      : 512000,
+    maxEntrypointSize : 512000
+  },
+
   plugins: [
     new CleanWebpackPlugin(
       ['client'], {
-        root           : DIR.root,
-        verbose        : false,
-        dry            : false,
-        watch          : true,
-        allowExternal  : false,
-        beforeEmit     : true
+        root          : DIR.root,
+        verbose       : false,
+        dry           : false,
+        watch         : true,
+        allowExternal : false,
+        beforeEmit    : true
       }
     ),
 
     new UglifyJSPlugin({
-      parallel       : true,
-      exclude        : /node_modules/,
-      uglifyOptions  : {compress: {drop_console: true}}
+      parallel      : true,
+      exclude       : /node_modules/,
+      uglifyOptions : {compress: {drop_console: true}}
     })
   ]
 });
