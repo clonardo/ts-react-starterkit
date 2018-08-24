@@ -14,7 +14,7 @@ console.log(
 
 module.exports = {
   entry: {
-    'app': DIR.source + 'app.tsx',
+    'app': DIR.source + 'index.tsx',
   },
 
   output: {
@@ -62,7 +62,8 @@ module.exports = {
               modules        : true,
               localIdentName : '[name]__[local]--[hash:base64:4]',
               camelCase      : true,
-              namedExport    : true
+              namedExport    : true,
+              getLocalIdent  : ENV.cssModulesNameGenerator
             }
           },
           {

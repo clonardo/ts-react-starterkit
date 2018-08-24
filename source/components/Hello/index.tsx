@@ -1,9 +1,7 @@
 import * as React from 'react';
 import * as css from './styles/main.pcss';
 
-export interface HelloProps { compiler: string; framework: string; }
-
-export class Hello extends React.Component<HelloProps, {}> {
+class Hello extends React.Component<HelloProps, {}> {
   public render() {
     return <React.Fragment>
       <h1 className={css.mainTitle}>
@@ -12,3 +10,6 @@ export class Hello extends React.Component<HelloProps, {}> {
     </React.Fragment>;
   }
 }
+
+export interface HelloProps { compiler: string; framework: string; }
+export default Hello;
