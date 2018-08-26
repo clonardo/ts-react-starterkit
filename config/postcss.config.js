@@ -1,4 +1,5 @@
 const {ENV} = require('./settings');
+const postcssMixins = require('postcss-mixins')();
 
 module.exports = ctx => ({
   sourceMap: ctx.env === 'development',
@@ -8,7 +9,7 @@ module.exports = ctx => ({
       browsers     : ENV.browserlist,
       stage        : 0,
       autoprefixer : {grid: true},
-      insertBefore : {'nesting-rules': require('postcss-mixins')()}
+      insertBefore : {'nesting-rules': postcssMixins}
     },
     'cssnano': {
       preset: ['advanced', {reduceIdents: false}]

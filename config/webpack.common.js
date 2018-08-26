@@ -1,4 +1,4 @@
-const {DIR} = require('./settings');
+const {DIR, ENV} = require('./settings');
 const babelConfig = require('./babel.config');
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -6,6 +6,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const StyleLintFormatter = require('stylelint-formatter-pretty');
+
+/**
+ * It may be removed later, after this issue will be resolved:
+ * https://github.com/s-panferov/awesome-typescript-loader#configuration
+ */
+const {CheckerPlugin} = require('awesome-typescript-loader');
+
 
 const PROCESS_MODE = process.env.TARGET_ENV || 'development';
 console.log(
@@ -35,7 +42,11 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '.ts', '.tsx', '.js', '.jsx', '.pcss', '.css' ]
+    extensions: [ '.ts', '.tsx', '.js', '.jsx', '.pcss', '.css' ],
+    alias: {
+      "@Components" : DIR.components,
+      "@Containers" : DIR.containers
+    }
   },
 
   externals: {
@@ -138,8 +149,9 @@ module.exports = {
   },
 
   plugins: [
+    new CheckerPlugin(),
+
     new StyleLintPlugin({
-      syntax     : 'scss',
       configFile : DIR.config + 'stylelint.json',
       formatter  : StyleLintFormatter
     }),

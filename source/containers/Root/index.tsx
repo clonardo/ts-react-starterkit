@@ -1,8 +1,8 @@
+import Hello from '@Components/Hello';
 import * as React from 'react';
-import Hello from '../../components/Hello';
 import './styles/main.pcss';
 
-class App extends React.Component {
+class Root extends React.Component {
   public render() {
     return <React.Fragment>
       <Hello compiler='TypeScript' framework='React' />
@@ -10,4 +10,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Root;

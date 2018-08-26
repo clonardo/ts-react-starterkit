@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "alwaysStrict": true,
-    "baseUrl": "./",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "jsx": "preserve",
     "lib": [ "es2017", "dom" ],
+    "jsx": "preserve",
+    "target": "es2015",
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
@@ -20,8 +20,12 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "target": "es2015"
+    "baseUrl": "./",
+    "paths": {
+      "@Components/*": [ "source/components/*" ],
+      "@Containers/*": [ "source/containers/*" ]
+    },
   },
-  "include": [ "./source/**/*" ],
-  "exclude": [ "./node_modules" ]
+  "include": [ "source/**/*" ],
+  "exclude": [ "node_modules" ]
 }
