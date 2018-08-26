@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "ts-react-starterkit",
+  "title": "Typescrit & React StarterKit",
   "description": "Boilerplate to setup a web project with Webpack 4, React 16, Typescript 3, CSS Modules and PostCSS.",
   "version": "0.0.0",
   "license": "UNLICENSED",

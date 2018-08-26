@@ -26,6 +26,7 @@ const DIR = {
 };
 
 const ENV = {
+  pkg,
   devPort     : 8081,
   browserlist : pkg.browserslist,
   cssModulesNameGenerator

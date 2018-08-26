@@ -163,6 +163,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template : DIR.source + 'index.ejs',
       filename : 'index.html',
+      title    : ENV.pkg.title,
       minify: {
         html5                         : true,
         removeComments                : true,
