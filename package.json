@@ -35,7 +35,8 @@
   },
   "dependencies": {
     "react": "16.4.2",
-    "react-dom": "16.4.2"
+    "react-dom": "16.4.2",
+    "sanitize.css": "7.0.1"
   },
   "devDependencies": {
     "@contactlab/stylelint-config-uxd": "1.1.8",

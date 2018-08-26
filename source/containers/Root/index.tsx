@@ -4,9 +4,11 @@ import './styles/main.pcss';
 
 class Root extends React.Component {
   public render() {
-    return <React.Fragment>
-      <Hello compiler='TypeScript' framework='React' />
-    </React.Fragment>;
+    return (
+      <React.Fragment>
+        <Hello compiler='TypeScript' framework='React' />
+      </React.Fragment>
+    );
   }
 }
 
