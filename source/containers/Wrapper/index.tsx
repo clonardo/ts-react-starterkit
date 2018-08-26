@@ -2,7 +2,7 @@ import Hello from '@Components/Hello';
 import * as React from 'react';
 import './styles/main.pcss';
 
-class Root extends React.Component {
+class Wrapper extends React.Component {
   public render() {
     return (
       <React.Fragment>
@@ -12,4 +12,4 @@ class Root extends React.Component {
   }
 }
 
-export default Root;
+export default Wrapper;
