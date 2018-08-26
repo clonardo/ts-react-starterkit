@@ -2,7 +2,14 @@
 
 Boilerplate to setup a web project with React 16, Typescript 3, CSS Modules, PostCSS and Webpack 4.
 
-[![dependencies Status](https://david-dm.org/giotramu/ts-react-starterkit/status.svg?style=flat-square)](https://david-dm.org/giotramu/ts-react-starterkit)
+<a href="https://david-dm.org/giotramu/ts-react-starterkit/master">
+  <img src="https://david-dm.org/giotramu/ts-react-starterkit/master.svg"
+    alt="Dependency Status" />
+</a>
+<a href="https://david-dm.org/giotramu/ts-react-starterkit/master?type=dev">
+  <img src="https://david-dm.org/giotramu/ts-react-starterkit/master/dev-status.svg"
+    alt="devDependency Status" />
+</a>
 
 
 ## Requirements
