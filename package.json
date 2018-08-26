@@ -2,7 +2,7 @@
   "private": true,
   "name": "ts-react-starterkit",
   "title": "Typescrit & React StarterKit",
-  "description": "Boilerplate to setup a web project with Webpack 4, React 16, Typescript 3, CSS Modules and PostCSS.",
+  "description": "Boilerplate to setup a web project with React 16, Typescript 3, CSS Modules, PostCSS and Webpack 4.",
   "version": "0.0.0",
   "license": "UNLICENSED",
   "author": "Giovanni Tramutola <tramutola.giovanni@gmail.com>",
@@ -15,6 +15,7 @@
   },
   "engines": {
     "node": ">= 8.5.x",
+    "npm": ">= 6.0",
     "yarn": ">= 1.5.x"
   },
   "main": "source/app.tsx",
