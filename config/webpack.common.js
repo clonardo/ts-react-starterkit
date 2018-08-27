@@ -1,7 +1,7 @@
 const {DIR} = require('./settings');
 const babelConfig = require('./babel.config');
 const pkg = require('../package.json');
-const cssModulesNameGenerator = require('./css-modules');
+const cssClassNameGenerator = require('./css-modules');
 
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -77,7 +77,7 @@ module.exports = {
               localIdentName : '[name]__[local]--[hash:base64:4]',
               camelCase      : true,
               namedExport    : true,
-              getLocalIdent  : cssModulesNameGenerator
+              getLocalIdent  : cssClassNameGenerator
             }
           },
           {
