@@ -4,12 +4,9 @@ function createHash () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
-module.exports = function cssModulesNameGenerator (loaderContext, localIdentName, localName, options) {
+function cssModulesNameGenerator (loaderContext, localIdentName, localName, options) {
   const fileName = path.basename(loaderContext.resourcePath);
-  if (fileName.indexOf('.global.scss') !== -1) {
-    return localName;
-  } else {
-    const name = fileName.replace(/\.[^/.]+$/, '');
-    return `${localName}__${createHash()}`;
-  }
+  return fileName.indexOf('.global.scss') !== -1 ? localName : `${localName}__${createHash()}`;
 }
+
+module.exports = cssModulesNameGenerator;
