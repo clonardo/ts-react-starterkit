@@ -45,7 +45,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '.ts', '.tsx', '.pcss', '.css' ],
+    extensions: [ '.js', '.jsx', '.ts', '.tsx', '.pcss', '.css' ],
     alias: {
       '@Components' : DIR.components,
       '@Containers' : DIR.containers
@@ -60,7 +60,9 @@ module.exports = {
   module: {
     rules: [
       /**
-       * Manage CSS + PCSS files
+       * Manage CSS and PCSS files.
+       * Also use CSS-Module for scope locally
+       * all class names and animation names.
        */
       {
         test    : /\.(p?)css$/,

@@ -11,7 +11,7 @@ module.exports = ctx => ({
       autoprefixer : {grid: true},
       insertBefore : {'nesting-rules': postcssMixins}
     },
-    'cssnano': {
+    cssnano: {
       preset: ['advanced', {reduceIdents: false}]
     },
     'postcss-reporter': {clearReportedMessages: true}
