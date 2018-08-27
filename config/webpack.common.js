@@ -6,7 +6,7 @@ const cssClassNameGenerator = require('./css-modules');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const StyleLintFormatter = require('stylelint-formatter-pretty');
 
@@ -45,7 +45,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '.ts', '.tsx', '.js', '.jsx', '.pcss', '.css' ],
+    extensions: [ '.ts', '.tsx', '.pcss', '.css' ],
     alias: {
       '@Components' : DIR.components,
       '@Containers' : DIR.containers
@@ -74,7 +74,6 @@ module.exports = {
               importLoaders  : 1,
               url            : false,
               modules        : true,
-              localIdentName : '[name]__[local]--[hash:base64:4]',
               camelCase      : true,
               namedExport    : true,
               getLocalIdent  : cssClassNameGenerator
@@ -152,6 +151,14 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(PROCESS_MODE)
+      }
+    }),
+
+    new webpack.WatchIgnorePlugin([/pcss\.d\.ts$/]),
+
     new CheckerPlugin(),
 
     new StyleLintPlugin({
@@ -173,14 +180,6 @@ module.exports = {
         removeScriptTypeAttributes    : true,
         removeStyleLinkTypeAttributes : true,
         useShortDoctype               : true
-      }
-    }),
-
-    new webpack.WatchIgnorePlugin([/pcss\.d\.ts$/]),
-
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(PROCESS_MODE)
       }
     })
   ]

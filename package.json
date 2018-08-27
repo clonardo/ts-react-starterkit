@@ -42,7 +42,7 @@
   "devDependencies": {
     "@contactlab/stylelint-config-uxd": "1.1.8",
     "@contactlab/tslint-config": "1.1.0",
-    "@types/react": "16.4.11",
+    "@types/react": "16.4.12",
     "@types/react-dom": "16.0.7",
     "@types/react-router-dom": "4.3.0",
     "autoprefixer": "9.1.3",
