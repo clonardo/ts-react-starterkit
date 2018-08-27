@@ -1,6 +1,7 @@
-import Hello from '@Components/Hello';
 import * as React from 'react';
+
 import './styles/main.pcss';
+import Hello from '@Components/Hello';
 
 class Wrapper extends React.Component {
   public render() {

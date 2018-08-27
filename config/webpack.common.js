@@ -47,8 +47,8 @@ module.exports = {
   resolve: {
     extensions: [ '.ts', '.tsx', '.js', '.jsx', '.pcss', '.css' ],
     alias: {
-      "@Components" : DIR.components,
-      "@Containers" : DIR.containers
+      '@Components' : DIR.components,
+      '@Containers' : DIR.containers
     }
   },
 

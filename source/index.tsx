@@ -1,10 +1,9 @@
-import * as ReactDOM from 'react-dom';
-
-import {BrowserRouter, Switch, Router} from 'react-router-dom';
-import Wrapper from '@Containers/Wrapper';
 import './styles/common.global.pcss';
+import Wrapper from '@Containers/Wrapper';
+import * as ReactDOM from 'react-dom';
+import { BrowserRouter, Router, Switch } from 'react-router-dom';
 
-function AppRouting () {
+function AppRouting() {
   return (
     <BrowserRouter>
       <Switch>

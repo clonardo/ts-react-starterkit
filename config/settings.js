@@ -8,7 +8,7 @@ const DIR = {
   source     : path.join(root, 'source/'),
   containers : path.join(root, 'source/containers/'),
   components : path.join(root, 'source/components/'),
-  config     : path.join(root, 'config/'),
+  config     : path.join(root, 'config/')
 };
 
 const ENV = {
