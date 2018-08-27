@@ -1,5 +1,8 @@
-const {DIR, ENV} = require('./settings');
+const {DIR} = require('./settings');
 const babelConfig = require('./babel.config');
+const pkg = require('../package.json');
+const cssModulesNameGenerator = require('./css-modules');
+
 const chalk = require('chalk');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -74,7 +77,7 @@ module.exports = {
               localIdentName : '[name]__[local]--[hash:base64:4]',
               camelCase      : true,
               namedExport    : true,
-              getLocalIdent  : ENV.cssModulesNameGenerator
+              getLocalIdent  : cssModulesNameGenerator
             }
           },
           {
@@ -163,7 +166,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template : DIR.source + 'index.ejs',
       filename : 'index.html',
-      title    : ENV.pkg.title,
+      title    : pkg.title,
       minify: {
         html5                         : true,
         removeComments                : true,

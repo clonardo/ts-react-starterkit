@@ -1,3 +1,6 @@
 {
-  "extends": "@contactlab/stylelint-config-uxd"
+  "extends": [
+    "@contactlab/stylelint-config-uxd",
+    "stylelint-config-css-modules"
+  ]
 }
