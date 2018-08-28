@@ -12,7 +12,12 @@ module.exports = ctx => ({
       insertBefore : {'nesting-rules': postcssMixins}
     },
     cssnano: {
-      preset: ['advanced', {reduceIdents: false}]
+      preset: [
+        'advanced', {
+          reduceIdents    : false,
+          discardComments : {removeAll: true}
+        }
+      ]
     },
     'postcss-reporter': {clearReportedMessages: true}
   }
