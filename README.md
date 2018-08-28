@@ -3,11 +3,11 @@
 Boilerplate to setup a web project with React 16, Typescript 3, Babel 6, CSS Modules, PostCSS and Webpack 4.
 
 <a href="https://david-dm.org/giotramu/ts-react-starterkit/master">
-  <img src="https://david-dm.org/giotramu/ts-react-starterkit/master.svg"
+  <img src="https://david-dm.org/giotramu/ts-react-starterkit/master.svg?style=flat-square"
     alt="Dependency Status" />
 </a>
 <a href="https://david-dm.org/giotramu/ts-react-starterkit/master?type=dev">
-  <img src="https://david-dm.org/giotramu/ts-react-starterkit/master/dev-status.svg"
+  <img src="https://david-dm.org/giotramu/ts-react-starterkit/master/dev-status.svg?style=flat-square"
     alt="devDependency Status" />
 </a>
 
@@ -39,11 +39,9 @@ $ yarn lint
 - [React](https://github.com/facebook/react/)
 - [Webpack](https://github.com/webpack/webpack)
   - [awesome-typescript-loader](https://github.com/TypeStrong/ts-loader)
-  - [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin)
   - [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
   - [postcss-loader](https://github.com/postcss/postcss-loader)
   - [source-map-loader](https://github.com/postcss/postcss-loader)
-  - [style-loader](https://github.com/webpack-contrib/style-loader)
   - [svg-react-loader](https://github.com/jhamlet/svg-react-loader)
   - [tslint-loader](https://github.com/wbuchwalter/tslint-loader)
   - [typings-for-css-modules-loader](https://github.com/Jimdo/typings-for-css-modules-loader)
@@ -52,7 +50,9 @@ $ yarn lint
 - [PostCSS](https://github.com/postcss/postcss)
   - [autoprefixer](https://github.com/MoOx/postcss-cssnext)
   - [css-nano](https://github.com/cssnano/cssnano)
-  - [postcss-import](https://github.com/postcss/postcss-import)
+  - [postcss-mixins](https://github.com/postcss/postcss-mixins)
+  - [postcss-preset-env](https://github.com/csstools/postcss-preset-env)
+  - [postcss-reporter](https://github.com/postcss/postcss-reporter)
 - [Babel](https://github.com/babel/babel)
   - [babel-preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
   - [babel-preset-react](https://github.com/babel/babel/tree/master/packages/babel-preset-react)
