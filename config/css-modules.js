@@ -7,7 +7,7 @@ function createHash () {
 function cssClassNameGenerator (loaderContext, localIdentName, localName) {
   const file = path.basename(loaderContext.resourcePath);
   const name = file.replace(/\.[^/.]+$/, '');
-  return file.indexOf('.glob.pcss') !== -1 ? localName : `${name}_${localName}_${createHash()}`;
+  return file.includes('.global') ? localName : `${name}_${localName}_${createHash()}`;
 }
 
 module.exports = cssClassNameGenerator;
