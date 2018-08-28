@@ -56,4 +56,4 @@ $ yarn lint
 - [Babel v6.x](https://github.com/babel/babel)
   - [babel-preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
   - [babel-preset-react](https://github.com/babel/babel/tree/master/packages/babel-preset-react)
-- [BlueprintJS v3.x](https://github.com/palantir/blueprint)
+- [Sanitize.css](https://github.com/csstools/sanitize.css)
