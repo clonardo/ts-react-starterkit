@@ -1,3 +1,5 @@
+/* eslint key-spacing: ["error", {"align": {"beforeColon": true, "afterColon": true, "on": "colon"}}] */
+
 const {DIR} = require('./settings');
 const babelConfig = require('./babel.config');
 const pkg = require('../package.json');
@@ -16,15 +18,14 @@ const StyleLintFormatter = require('stylelint-formatter-pretty');
  */
 const {CheckerPlugin} = require('awesome-typescript-loader');
 
-
 const PROCESS_MODE = process.env.TARGET_ENV || 'development';
 console.log(
-  chalk.cyan('\n' + `>> Build for ${chalk.bold(PROCESS_MODE)} <<` + '\n')
+  chalk.cyan(`\n>> Build for ${chalk.bold(PROCESS_MODE)} <<\n`)
 );
 
 module.exports = {
   entry: {
-    'app': DIR.source + 'index.tsx',
+    app: DIR.source + 'index.tsx'
   },
 
   output: {
@@ -39,21 +40,21 @@ module.exports = {
   stats: {
     children : false,
     chunks   : false,
-    exclude  : [ 'node_modules' ],
+    exclude  : ['node_modules'],
     modules  : false,
     timings  : false
   },
 
   resolve: {
-    extensions: [ '.js', '.jsx', '.ts', '.tsx', '.pcss', '.css' ],
-    alias: {
+    extensions : ['.js', '.jsx', '.ts', '.tsx', '.pcss', '.css'],
+    alias      : {
       '@Components' : DIR.components,
       '@Containers' : DIR.containers
     }
   },
 
   externals: {
-    'react'     : 'React',
+    react       : 'React',
     'react-dom' : 'ReactDOM'
   },
 
@@ -67,18 +68,18 @@ module.exports = {
       {
         test    : /\.(p?)css$/,
         exclude : /node_modules/,
-        use: [
+        use     : [
           PROCESS_MODE === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
-            loader: 'typings-for-css-modules-loader',
-            options: {
-              sourceMap      : PROCESS_MODE === 'development',
-              importLoaders  : 1,
-              url            : false,
-              modules        : true,
-              camelCase      : true,
-              namedExport    : true,
-              getLocalIdent  : cssClassNameGenerator
+            loader  : 'typings-for-css-modules-loader',
+            options : {
+              sourceMap     : PROCESS_MODE === 'development',
+              importLoaders : 1,
+              url           : false,
+              modules       : true,
+              camelCase     : true,
+              namedExport   : true,
+              getLocalIdent : cssClassNameGenerator
             }
           },
           {
@@ -94,8 +95,18 @@ module.exports = {
       {
         test    : /\.js$/,
         exclude : /node_modules/,
-        enforce : "pre",
-        loader  : "source-map-loader"
+        enforce : 'pre',
+        loader  : 'source-map-loader'
+      },
+
+      /**
+       * Lint TS files
+       */
+      {
+        test    : /\.ts(x?)$/,
+        exclude : /node_modules/,
+        enforce : 'pre',
+        loader  : 'eslint-loader'
       },
 
       /**
@@ -104,21 +115,21 @@ module.exports = {
       {
         test    : /\.ts(x?)$/,
         exclude : /node_modules/,
-        use: [
+        use     : [
           {
-            loader: 'awesome-typescript-loader',
-            options: {
-              useCache : true,
-              useBabel : true,
-              babelOptions: {
+            loader  : 'awesome-typescript-loader',
+            options : {
+              useCache     : true,
+              useBabel     : true,
+              babelOptions : {
                 babelrc : false,
                 presets : babelConfig.presets
               }
             }
           },
           {
-            loader: 'tslint-loader',
-            options: {
+            loader  : 'tslint-loader',
+            options : {
               configFile : DIR.config + 'tslint.json',
               emitErrors : true,
               failOnHint : true,
@@ -134,7 +145,7 @@ module.exports = {
       {
         test    : /\.svg$/,
         loader  : 'svg-react-loader',
-        options: {
+        options : {
           classIdPrefix : '[name]-[hash:8]__',
           propsMap      : {fillRule: 'fill-rule'},
           xmlnsTest     : /^xmlns.*$/
@@ -155,7 +166,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(PROCESS_MODE)
+        NODE_ENV: JSON.stringify(PROCESS_MODE)
       }
     }),
 
@@ -176,7 +187,7 @@ module.exports = {
       template : DIR.source + 'index.ejs',
       filename : 'index.html',
       title    : pkg.title,
-      minify: {
+      minify   : {
         html5                         : true,
         removeComments                : true,
         removeScriptTypeAttributes    : true,

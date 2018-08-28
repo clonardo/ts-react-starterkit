@@ -1,11 +1,14 @@
+/* eslint key-spacing: ["error", {"align": {"beforeColon": true, "afterColon": true, "on": "colon"}}] */
+
 const {ENV} = require('./settings');
+
 const postcssMixins = require('postcss-mixins')();
 
 module.exports = ctx => ({
-  sourceMap: ctx.env === 'development',
-  plugins: {
-    'postcss-import': {},
-    'postcss-preset-env': {
+  sourceMap : ctx.env === 'development',
+  plugins   : {
+    'postcss-import'     : {},
+    'postcss-preset-env' : {
       browsers     : ENV.browserlist,
       stage        : 0,
       autoprefixer : {grid: true},

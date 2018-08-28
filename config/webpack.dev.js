@@ -1,7 +1,8 @@
+/* eslint key-spacing: ["error", {"align": {"beforeColon": true, "afterColon": true, "on": "colon"}}] */
+
 const {DIR, ENV} = require('./settings');
 const commonConfig = require('./webpack.common');
 const merge = require('webpack-merge');
-
 
 module.exports = merge(commonConfig, {
   mode: 'development',
@@ -15,9 +16,6 @@ module.exports = merge(commonConfig, {
     open               : true,
     compress           : true,
     stats              : commonConfig.stats,
-    overlay: {
-      warnings : false,
-      errors   : true
-    }
+    overlay            : {warnings: false, errors: true}
   }
 });

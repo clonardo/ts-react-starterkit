@@ -1,9 +1,9 @@
+/* eslint key-spacing: ["error", {"align": {"beforeColon": true, "afterColon": true, "on": "colon"}}] */
+
 const {DIR} = require('./settings');
 const commonConfig = require('./webpack.common');
 const merge = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 
 module.exports = merge(commonConfig, {
   mode: 'production',
@@ -23,12 +23,6 @@ module.exports = merge(commonConfig, {
         allowExternal : false,
         beforeEmit    : true
       }
-    ),
-
-    new UglifyJSPlugin({
-      parallel      : true,
-      exclude       : /node_modules/,
-      uglifyOptions : {compress: {drop_console: true}}
-    })
+    )
   ]
 });

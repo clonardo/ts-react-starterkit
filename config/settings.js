@@ -1,5 +1,8 @@
+/* eslint key-spacing: ["error", {"align": {"beforeColon": true, "afterColon": true, "on": "colon"}}] */
+
 const pkg = require('../package.json');
 const path = require('path');
+
 const root = path.resolve(__dirname, '../');
 
 const DIR = {
@@ -13,7 +16,7 @@ const DIR = {
 
 const ENV = {
   devPort     : 8081,
-  browserlist : pkg.browserslist,
+  browserlist : pkg.browserslist
 }
 
-module.exports = {DIR, ENV}
+module.exports = {DIR, ENV};
