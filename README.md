@@ -35,9 +35,9 @@ $ yarn lint
 
 ## Built on top
 
-- [Typescript v3.x](https://github.com/Microsoft/TypeScript)
-- [React v16.x](https://github.com/facebook/react/)
-- [Webpack v4.x](https://github.com/webpack/webpack)
+- [Typescript](https://github.com/Microsoft/TypeScript)
+- [React](https://github.com/facebook/react/)
+- [Webpack](https://github.com/webpack/webpack)
   - [awesome-typescript-loader](https://github.com/TypeStrong/ts-loader)
   - [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin)
   - [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
@@ -49,11 +49,11 @@ $ yarn lint
   - [typings-for-css-modules-loader](https://github.com/Jimdo/typings-for-css-modules-loader)
   - [url-loader](https://github.com/webpack-contrib/url-loader)
   - [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
-- [PostCSS v7.x](https://github.com/postcss/postcss)
+- [PostCSS](https://github.com/postcss/postcss)
   - [autoprefixer](https://github.com/MoOx/postcss-cssnext)
   - [css-nano](https://github.com/cssnano/cssnano)
   - [postcss-import](https://github.com/postcss/postcss-import)
-- [Babel v6.x](https://github.com/babel/babel)
+- [Babel](https://github.com/babel/babel)
   - [babel-preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
   - [babel-preset-react](https://github.com/babel/babel/tree/master/packages/babel-preset-react)
 - [Sanitize.css](https://github.com/csstools/sanitize.css)
