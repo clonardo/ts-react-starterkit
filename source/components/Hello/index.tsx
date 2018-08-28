@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as css from './styles/main.pcss';
+import * as css from './styles/Hello.pcss';
 
 class Hello extends React.Component<HelloProps, {}> {
   public render() {

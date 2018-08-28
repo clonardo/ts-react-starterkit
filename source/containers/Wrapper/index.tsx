@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import './styles/main.pcss';
+import './styles/Wrapper.pcss';
 import Hello from '@Components/Hello';
 
 class Wrapper extends React.Component {

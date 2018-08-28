@@ -1,20 +1,32 @@
+<%
+  var $config = htmlWebpackPlugin.options.config;
+  var $chunks = htmlWebpackPlugin.files.chunks;
+%>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title><%= $config.title %></title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <% if ($config.isProd) { %>
+    <link rel="stylesheet" href="<%= $chunks.styles.css %>">
+  <% } %>
+
 </head>
+
 <body>
+  <main id="MountApp"></main>
 
-  <main id="MountApp">
-    <!-- This is where our React app will go -->
-  </main>
-
-  <!-- Dependencies -->
   <script src="https://unpkg.com/react/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
 
+  <% if ($config.isProd) { %>
+    <script async="true" src="<%= $chunks.app.entry %>"></script>
+  <% } %>
 </body>
+
 </html>

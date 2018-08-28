@@ -1,11 +1,9 @@
 const {DIR} = require('./settings');
 const babelConfig = require('./babel.config');
-const pkg = require('../package.json');
 const cssClassNameGenerator = require('./css-modules');
 
 const chalk = require('chalk');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const StyleLintFormatter = require('stylelint-formatter-pretty');
@@ -15,7 +13,6 @@ const StyleLintFormatter = require('stylelint-formatter-pretty');
  * https://github.com/s-panferov/awesome-typescript-loader#configuration
  */
 const {CheckerPlugin} = require('awesome-typescript-loader');
-
 
 const PROCESS_MODE = process.env.TARGET_ENV || 'development';
 console.log(
@@ -28,33 +25,33 @@ module.exports = {
   },
 
   output: {
-    filename   : '[name].bundle.js',
-    path       : DIR.client,
-    pathinfo   : true,
-    publicPath : '/'
+    filename: '[name].bundle.js',
+    path: DIR.client,
+    pathinfo: true,
+    publicPath: './'
   },
 
   cache: true,
 
   stats: {
-    children : false,
-    chunks   : false,
-    exclude  : [ 'node_modules' ],
-    modules  : false,
-    timings  : false
+    children: false,
+    chunks: false,
+    exclude: ['node_modules'],
+    modules: false,
+    timings: false
   },
 
   resolve: {
-    extensions: [ '.js', '.jsx', '.ts', '.tsx', '.pcss', '.css' ],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.pcss', '.css'],
     alias: {
-      '@Components' : DIR.components,
-      '@Containers' : DIR.containers
+      '@Components': DIR.components,
+      '@Containers': DIR.containers
     }
   },
 
   externals: {
-    'react'     : 'React',
-    'react-dom' : 'ReactDOM'
+    'react': 'React',
+    'react-dom': 'ReactDOM'
   },
 
   module: {
@@ -65,25 +62,29 @@ module.exports = {
        * all class names and animation names.
        */
       {
-        test    : /\.(p?)css$/,
-        exclude : /node_modules/,
+        test: /\.(p?)css$/,
+        exclude: /node_modules/,
         use: [
           PROCESS_MODE === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'typings-for-css-modules-loader',
             options: {
-              sourceMap      : PROCESS_MODE === 'development',
-              importLoaders  : 1,
-              url            : false,
-              modules        : true,
-              camelCase      : true,
-              namedExport    : true,
-              getLocalIdent  : cssClassNameGenerator
+              sourceMap: PROCESS_MODE === 'development',
+              importLoaders: 1,
+              url: false,
+              modules: true,
+              camelCase: true,
+              namedExport: true,
+              getLocalIdent: cssClassNameGenerator
             }
           },
           {
-            loader  : 'postcss-loader',
-            options : {config: {path: DIR.config}}
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: DIR.config
+              }
+            }
           }
         ]
       },
@@ -92,37 +93,36 @@ module.exports = {
        * Regenerate source-map
        */
       {
-        test    : /\.js$/,
-        exclude : /node_modules/,
-        enforce : "pre",
-        loader  : "source-map-loader"
+        test: /\.js$/,
+        exclude: /node_modules/,
+        enforce: "pre",
+        loader: "source-map-loader"
       },
 
       /**
        * Manage TS and TSX files
        */
       {
-        test    : /\.ts(x?)$/,
-        exclude : /node_modules/,
-        use: [
-          {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [{
             loader: 'awesome-typescript-loader',
             options: {
-              useCache : true,
-              useBabel : true,
+              useCache: true,
+              useBabel: true,
               babelOptions: {
-                babelrc : false,
-                presets : babelConfig.presets
+                babelrc: false,
+                presets: babelConfig.presets
               }
             }
           },
           {
             loader: 'tslint-loader',
             options: {
-              configFile : DIR.config + 'tslint.json',
-              emitErrors : true,
-              failOnHint : true,
-              formatter  : 'codeFrame'
+              configFile: DIR.config + 'tslint.json',
+              emitErrors: true,
+              failOnHint: true,
+              formatter: 'codeFrame'
             }
           }
         ]
@@ -132,12 +132,14 @@ module.exports = {
        * Manage SVG files
        */
       {
-        test    : /\.svg$/,
-        loader  : 'svg-react-loader',
+        test: /\.svg$/,
+        loader: 'svg-react-loader',
         options: {
-          classIdPrefix : '[name]-[hash:8]__',
-          propsMap      : {fillRule: 'fill-rule'},
-          xmlnsTest     : /^xmlns.*$/
+          classIdPrefix: '[name]-[hash:8]__',
+          propsMap: {
+            fillRule: 'fill-rule'
+          },
+          xmlnsTest: /^xmlns.*$/
         }
       },
 
@@ -145,9 +147,11 @@ module.exports = {
        * Manage assets
        */
       {
-        test    : /\.(png|jpe?g|gif|svg|eot|ttf|woff(2)?)$/,
-        loader  : 'url-loader',
-        options : {limit: 10000}
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff(2)?)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
       }
     ]
   },
@@ -164,25 +168,8 @@ module.exports = {
     new CheckerPlugin(),
 
     new StyleLintPlugin({
-      configFile : DIR.config + 'stylelint.json',
-      formatter  : StyleLintFormatter
-    }),
-
-    new MiniCssExtractPlugin({
-      filename: '[name].bundle.css'
-    }),
-
-    new HtmlWebpackPlugin({
-      template : DIR.source + 'index.ejs',
-      filename : 'index.html',
-      title    : pkg.title,
-      minify: {
-        html5                         : true,
-        removeComments                : true,
-        removeScriptTypeAttributes    : true,
-        removeStyleLinkTypeAttributes : true,
-        useShortDoctype               : true
-      }
+      configFile: DIR.config + 'stylelint.json',
+      formatter: StyleLintFormatter
     })
   ]
 };
